@@ -1,0 +1,19 @@
+hive> INSERT OVERWRITE [LOCAL] DIRECTORY directory
+
+#Exports to HDFS directory
+hive> INSERT OVERWRITE DIRECTORY '/user/root/output/export'
+    > ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    > SELECT * FROM emp.employee;
+
+# Syntax
+hive> dfs <dfs command>
+
+# Example
+hive> dfs -ls /user/root/output/export
+
+#Exports to LOCAL directory
+hive> INSERT OVERWRITE LOCAL DIRECTORY '/export' 
+    > ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    > SELECT * FROM emp.employee;
+
+$ cat /path/to/result/* > output.csv
