@@ -1,0 +1,8 @@
+CREATE TABLE files (line STRING);
+LOAD DATA LOCAL INPATH '/episodeIV_dialogues.txt' INTO TABLE files;
+CREATE TABLE word_count AS 
+SELECT word, count(1) AS count FROM
+(SELECT explode(split(line, ' ')) AS word FROM files) w
+WHERE word = 'LUKE' 
+GROUP BY word
+ORDER BY word;
